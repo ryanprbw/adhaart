@@ -27,7 +27,7 @@ class CarouselController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'title'     => 'required|min:5',
             'content'   => 'required|min:10'
         ]);
@@ -65,7 +65,7 @@ class CarouselController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'image'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'image|mimes:jpg,png,gif,svg|max:2048',
             'title'     => 'required|min:5',
             'content'   => 'required|min:10'
         ]);
@@ -108,6 +108,6 @@ class CarouselController extends Controller
         $carousel->delete();
 
         //redirect to index
-        return back()->with('message', 'Carousel deleted.');
+        return back()->with('success', 'Carousel deleted.');
     }
 }

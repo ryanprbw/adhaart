@@ -52,7 +52,7 @@ class DashboardGalleryController extends Controller
             'title' => 'required|max:255',
             'category_id' => 'required',
             'slug' => 'required|unique:galleries',
-            'image' => 'image|file',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'body' => 'required'
         ]);
 
@@ -61,7 +61,8 @@ class DashboardGalleryController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 20);
+        $validatedData['body2'] = Str::limit(strip_tags($request->body), 999);
 
         Gallery::create($validatedData);
         return redirect('admin/galleries')->with('success', 'Gallery Berhasil Ditambahkan');
@@ -133,7 +134,8 @@ class DashboardGalleryController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 20);
+        $validatedData['body2'] = Str::limit(strip_tags($request->body), 999);
 
         Gallery::where('id', $gallery->id)
             ->update($validatedData);

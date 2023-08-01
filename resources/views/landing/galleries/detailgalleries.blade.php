@@ -24,6 +24,7 @@
 
         </div>
 
+
     </section>
 
 
@@ -31,16 +32,33 @@
 
 <body>
 
+    <div
+        class="gap-4 text-justify p-8 mx-auto flex flex-col items-center bg-white border border-gray-200  shadow md:flex-row md:max-w-fit dark:border-gray-700 dark:bg-gray-800">
 
-    <a href="#"
-        class="p-8 mx-auto flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-fit hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-48 md:w-auto md:rounded-none md:rounded-l-lg"
-            src="{{ Storage::url('' . $gallery->image) }}" alt="">
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $gallery->title }}</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{!! $gallery->body !!}</p>
+
+
+        <div class="grid gap-4 " style="width: fit-content">
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="{{ Storage::url('' . $gallery->image) }}" alt="">
+            </div>
         </div>
-    </a>
+
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $gallery->title }}
+            </h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $gallery->body2 }}</p>
+            <small class="text-xs mb-3 font-normal text-gray-700 dark:text-gray-400"
+                href="/posts?author={{ $gallery->author->username }}">Created by
+                {{ $gallery->author->name }}</small>
+            <small class="text-xs mb-3 font-normal text-gray-700 dark:text-gray-400"
+                href="/posts?author={{ $gallery->author->username }}">
+                {{ $gallery->created_at }}</small>
+        </div>
+
+
+    </div>
+
+
 
 </body>
 

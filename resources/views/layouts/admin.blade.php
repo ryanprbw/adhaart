@@ -23,6 +23,7 @@
 </head>
 
 <body class="font-sans antialiased">
+
     @if (Session::has('message'))
         <!-- This example requires Tailwind CSS v2.0+ -->
         <div class="bg-indigo-600" x-data="{ open: true }" x-show="open">
@@ -77,7 +78,7 @@
             </div>
             <nav :class="{ 'block': open, 'hidden': !open }"
                 class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
-                <x-admin-link :href="route('admin.carousels.index')" :active="request()->routeIs('admin.carousels.index')">Caraousel
+                <x-admin-link :href="route('admin.carousels.index')" :active="request()->routeIs('admin.carousels.index')">Carousel
                 </x-admin-link>
                 <x-admin-link :href="route('admin.galleries.index')" :active="request()->routeIs('admin.galleries.index')">Gallery
                 </x-admin-link>

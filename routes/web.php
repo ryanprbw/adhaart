@@ -19,11 +19,6 @@ Route::get('/about', [LandingController::class, 'about']);
 Route::get('/contact', [LandingController::class, 'contact']);
 Route::resource('/gallery', GalleryController::class);
 
-
-
-
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -32,7 +27,6 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::resource('/roles', RoleController::class);
     Route::resource('/carousels', CarouselController::class);
-
     Route::resource('/galleries', DashboardGalleryController::class);
     Route::post('/roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('roles.permissions');
     Route::delete('/roles/{role}/permissions/{permission}', [RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
